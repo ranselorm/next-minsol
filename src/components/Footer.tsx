@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+
 const footerLinks = {
   company: [
     { label: "Home", url: "/" },

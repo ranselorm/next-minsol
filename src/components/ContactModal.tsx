@@ -139,7 +139,7 @@ const ContactModal: React.FC = () => {
                   We are here to assist you. Feel free to reach out!
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 text-sm">
                 <p>
                   <strong>Office Address:</strong>
                   <br />
