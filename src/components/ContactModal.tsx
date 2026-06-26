@@ -151,7 +151,7 @@ const ContactModal: React.FC = () => {
                 </p>
                 <p className="flex items-center gap-x-2">
                   <Icon icon="ic:baseline-email" />
-                  info@minsolltd.com
+                  operationsgh@minsolltd.com
                 </p>
               </CardContent>
             </Card>

@@ -19,7 +19,7 @@ const footerLinks = {
     { label: "Facebook", icon: "circum:facebook", url: "#" },
   ],
   contact: [
-    { label: "info@minsolltd.com", icon: "mdi-light:email" },
+    { label: "operationsgh@minsolltd.com", icon: "mdi-light:email" },
     {
       label: "+233 30 254 3667",
       icon: "mdi-light:phone",
@@ -78,7 +78,7 @@ const Footer: React.FC = () => (
       </div>
     </div>
     <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
-      © 2025 Minsol. All rights reserved.
+      © 2026 Minsol. All rights reserved.
     </div>
   </footer>
 );
