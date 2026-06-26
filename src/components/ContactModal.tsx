@@ -31,7 +31,7 @@ const ContactModal: React.FC = () => {
   });
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -68,6 +68,7 @@ const ContactModal: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="focus:ring-main border-gray-700 border"
+                      required
                     />
                   </div>
                   <div>
@@ -80,13 +81,14 @@ const ContactModal: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       className="focus:ring-main border-gray-700 border"
+                      required
                     />
                   </div>
                 </div>
 
                 <div>
                   <Label htmlFor="service">Select a Service</Label>
-                  <Select onValueChange={handleServiceChange}>
+                  <Select onValueChange={handleServiceChange} required>
                     <SelectTrigger className="border border-gray-700">
                       <SelectValue placeholder="Choose a service" />
                     </SelectTrigger>
@@ -117,6 +119,7 @@ const ContactModal: React.FC = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     className="focus:ring-main border-gray-700 border"
+                    required
                   />
                 </div>
 
@@ -144,7 +147,7 @@ const ContactModal: React.FC = () => {
                 </p>
                 <p className="flex items-center gap-x-2">
                   <Icon icon="ic:sharp-phone" />
-                  +233 254 3667
+                  +233 30 254 3667
                 </p>
                 <p className="flex items-center gap-x-2">
                   <Icon icon="ic:baseline-email" />
