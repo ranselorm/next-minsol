@@ -4,7 +4,7 @@ import ParallaxHero from "@/components/ParallaxHero";
 import ProductCard from "@/components/ProductCard";
 import ProductHero from "@/components/ProductHero";
 import RssFeed from "@/components/RssFeed";
-import React from "react";
+import Reveal from "@/components/Reveal";
 
 const products = [
   {
@@ -34,41 +34,74 @@ const products = [
 
 const Products = () => {
   return (
-    <section className="gr-gray-100">
+    <section>
       <ProductHero
         title="Our Products"
         subtitle="Discover comfort and efficiency with our top-quality products"
         backgroundImage="/images/ground.jpg"
       />
 
-      <main className="py-16 text-center container mx-auto px-6 md:px-20">
-        <div>
-          <div className="mb-10">
-            <h2 className="capitalize text-2xl mb-4 text-main">
-              Ground support consumables
-            </h2>
-            <p className="text-base max-w-3xl mx-auto text-gray-700">
-              We provide robust mining and ground support solutions, including
-              high-quality welded mesh and split set products. Our welded mesh
-              offers superior stability and reinforcement for underground mine
-              structures, while our split sets ensure effective ground support
-              and stability.
+      <main className="bg-white py-20 md:py-24">
+        <div className="site-shell">
+          <Reveal className="mb-12 grid gap-10 border-b border-slate-900/10 pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 md:mb-16">
+            <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Product range</p>
+              <h2 className="max-w-md text-3xl font-medium leading-tight tracking-[-0.03em] text-blu md:text-5xl">Ground support consumables.</h2>
+            </div>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9">
+              We provide robust mining and ground support solutions, including high-quality welded mesh and split set products. Our welded mesh offers superior stability and reinforcement for underground mine structures, while our split sets ensure effective ground support and stability.
             </p>
-          </div>
-          <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6 gr-gray-200">
-            {products.map((product, index) => (
-              <ProductCard
-                key={index}
-                image={product.image}
-                title={product.title}
-                description={product.description}
-                description2={product.description2}
-              />
-            ))}
-          </div>
-        </div>
+          </Reveal>
+          <Reveal>
+            <ProductCard
+              image={products[0].image}
+              title={products[0].title}
+              description={products[0].description}
+              index={0}
+              featured
+            />
+          </Reveal>
 
-        {/* <SplitTable /> */}
+          <div className="mt-20 border-t border-slate-900/10 pt-12 md:mt-24 md:pt-16">
+            <Reveal className="mb-10 flex flex-col justify-between gap-5 md:mb-12 md:flex-row md:items-end">
+              <div>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-main">Related products</p>
+                <h2 className="text-3xl font-medium tracking-[-0.03em] text-blu md:text-4xl">Core underground support.</h2>
+              </div>
+              <p className="max-w-sm text-sm leading-6 text-slate-600 md:text-base">Built for reliable installation, reinforcement, and long-term protection in demanding underground environments.</p>
+            </Reveal>
+            <div className="grid gap-x-10 gap-y-10 md:grid-cols-2">
+              {products.slice(1).map((product, index) => (
+                <Reveal key={product.title} delay={index * 80} className="h-full">
+                  <ProductCard
+                    image={product.image}
+                    title={product.title}
+                    description={product.description}
+                    description2={product.description2}
+                    index={index + 1}
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          <Reveal className="mt-20 border-y border-slate-900/10 py-8 md:mt-24 md:py-10">
+            <div className="grid gap-6 sm:grid-cols-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-main">Mesh lengths</p>
+                <p className="mt-3 text-2xl font-medium tracking-[-0.02em] text-blu">1m–4.5m</p>
+              </div>
+              <div className="sm:border-l sm:border-slate-900/10 sm:pl-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-main">Mesh widths</p>
+                <p className="mt-3 text-2xl font-medium tracking-[-0.02em] text-blu">1m–2.4m</p>
+              </div>
+              <div className="sm:border-l sm:border-slate-900/10 sm:pl-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-main">Wire gauges</p>
+                <p className="mt-3 text-2xl font-medium tracking-[-0.02em] text-blu">5.6mm &amp; 4mm</p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </main>
       <ParallaxHero />
       <Experience />
