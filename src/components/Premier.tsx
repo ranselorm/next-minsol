@@ -1,90 +1,66 @@
-import React from "react";
-import PremierCard from "./PremierCard";
+import { Icon } from "@iconify/react";
+import Reveal from "./Reveal";
 
 const projects = [
   {
     icon: "arcticons:idle-miner",
     title: "Mill Liners",
-    subtext: [
-      {
-        title: "SAG Mill & Ball Mill Liners",
-        description:
-          "Enhance the performance and longevity of your mills with our high-quality liners",
-      },
-      {
-        title: "Protective Linings",
-        description:
-          "Protect your equipment with our advanced lining solutions",
-      },
-      {
-        title: "Track Encapsulation Systems",
-        description:
-          "Expertly designed and manufactured by Polycorp, our encapsulation systems provide superior protection",
-      },
+    items: [
+      { title: "SAG Mill & Ball Mill Liners", description: "Enhance the performance and longevity of your mills with our high-quality liners." },
+      { title: "Protective Linings", description: "Protect your equipment with our advanced lining solutions." },
+      { title: "Track Encapsulation Systems", description: "Expertly designed and manufactured by Polycorp, our encapsulation systems provide superior protection." },
     ],
-    linkText: "LEARN MORE",
-    linkHref: "/contact",
   },
   {
     icon: "ic:sharp-grain",
     title: "Grinding Media",
-    subtext: [
-      {
-        title: "Steel Balls",
-        description:
-          "Available in diameters of 50mm, 60mm, 80mm, 90mm, 100mm, and 110mm, our steel balls are produced by West Africa Forgings Ltd., Ghana, ensuring durability and performance",
-      },
+    items: [
+      { title: "Steel Balls", description: "Available in diameters of 50mm, 60mm, 80mm, 90mm, 100mm, and 110mm, our steel balls are produced by West Africa Forgings Ltd., Ghana, ensuring durability and performance." },
     ],
-    linkText: "COMMERCIAL HVAC SYSTEMS",
-    linkHref: "/contact",
   },
   {
     icon: "arcticons:audio-video-factory",
     title: "Processing Plant Equipment",
-    description:
-      "A full suite of processing equipment including pythons, modular systems, inline pressure jigs, leach reactors, spinners, and IPJ-coal separators. Equipment is designed and manufactured by GEKKO and suited for extracting a range of minerals including gold, sulphide gold, silver, coal, polymetallic ores, tin, tantalum, and gemstones.",
-    linkText: "COMMERCIAL HVAC SYSTEMS",
-    linkHref: "/contact",
+    items: [
+      { title: "Equipment portfolio", description: "A full suite of processing equipment including pythons, modular systems, inline pressure jigs, leach reactors, spinners, and IPJ-coal separators. Equipment is designed and manufactured by GEKKO and suited for extracting a range of minerals including gold, sulphide gold, silver, coal, polymetallic ores, tin, tantalum, and gemstones." },
+    ],
   },
 ];
 
-const Premier: React.FC = () => {
-  return (
-    <section
-      className="relative bg-fixed bg-center bg-cover h-auto text-white"
-      style={{
-        backgroundImage: `url('/images/align1.jpg')`,
-      }}
-    >
-      <div className="absolute inset-0 bg-black/70"></div>
-
-      <div className="relative z-10 flex flex-col items-center py-20 h-full text-center px-4 md:px-20 container mx-auto">
-        <h1 className="text-2xl md:text-3xl max-w-2xl font-bold">
-          Premier Solutions for Mineral Processing Needs
-        </h1>
-        <p className="max-w-2xl text-gray-300">
-          At Minsol, we leverage our strategic partnerships with
-          industry-leading manufacturers and service providers to deliver
-          top-quality products and services across the sub-region. Our extensive
-          portfolio is designed to meet the diverse needs of the mining and
-          processing industries.
-        </p>
-        <div className="flex flex-col md:flex-row gap-8 mt-16">
-          {projects.map((service, index) => (
-            <PremierCard
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              subtext={service.subtext}
-              description={service.description}
-              linkText={service.linkText}
-              linkHref={service.linkHref}
-            />
-          ))}
+const Premier = () => (
+  <section className="bg-accent py-20 md:py-24">
+    <div className="site-shell">
+      <Reveal className="grid gap-10 border-b border-slate-900/10 pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Product capability</p>
+          <h2 className="max-w-md text-3xl font-medium leading-tight tracking-[-0.03em] text-blu md:text-5xl">Premier Solutions for Mineral Processing Needs</h2>
         </div>
+        <p className="max-w-2xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9">
+          At Minsol, we leverage our strategic partnerships with industry-leading manufacturers and service providers to deliver top-quality products and services across the sub-region. Our extensive portfolio is designed to meet the diverse needs of the mining and processing industries.
+        </p>
+      </Reveal>
+
+      <div className="mt-12 grid border-l border-t border-slate-900/15 md:mt-16 md:grid-cols-3">
+        {projects.map((project, index) => (
+          <Reveal key={project.title} delay={index * 80} className="h-full">
+            <article className="h-full border-b border-r border-slate-900/15 p-7 md:p-8">
+              <Icon icon={project.icon} className="h-9 w-9 text-main" />
+              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-main">0{index + 1}</p>
+              <h3 className="mt-3 text-2xl font-medium tracking-[-0.025em] text-blu">{project.title}</h3>
+              <div className="mt-7 space-y-5 border-t border-slate-900/10 pt-6">
+                {project.items.map((item) => (
+                  <p key={item.title} className="text-sm leading-6 text-slate-600">
+                    <span className="block font-medium text-blu">{item.title}</span>
+                    <span className="mt-1 block">{item.description}</span>
+                  </p>
+                ))}
+              </div>
+            </article>
+          </Reveal>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Premier;

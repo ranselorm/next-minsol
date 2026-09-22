@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Card from "./Card";
+import Reveal from "./Reveal";
 
 type Member = {
   name: string;
@@ -66,18 +68,26 @@ const committees: Committees = {
 
 const TabbedLayout: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<string>("Senior Management");
+  const isLeadership = selectedTab === "Senior Management";
 
   return (
-    <section className="py-8 h-auto md:h-[80vh] mb-40 md:mb-0 flex">
-      <div className="container mx-auto px-4 md:px-20 flex flex-col justify-between">
-        <div className="flex space-x-4 mb-6 border-b border-gray-300 pb-2 items-center">
+    <section className="bg-white py-20 md:py-24">
+      <div className="site-shell">
+        <Reveal className="mb-10 flex flex-col justify-between gap-6 md:mb-12 md:flex-row md:items-end">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Our people</p>
+            <h2 className="text-3xl font-medium tracking-[-0.03em] text-blu md:text-5xl">The team behind Minsol.</h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-slate-600 md:text-base">Experienced technical, operational, and administrative professionals working across the region.</p>
+        </Reveal>
+        <div className="mb-8 flex flex-wrap gap-2 border-b border-slate-900/10 pb-5 md:mb-10">
           {Object.keys(committees).map((tab) => (
             <button
               key={tab}
-              className={`text-lg font-medium ${
+              className={`rounded-sm px-4 py-2 text-sm font-medium transition-colors ${
                 selectedTab === tab
-                  ? "text-main border-b-2 border-main"
-                  : "text-gray-600"
+                  ? "bg-main text-white"
+                  : "text-slate-600 hover:bg-accent hover:text-blu"
               }`}
               onClick={() => setSelectedTab(tab)}
             >
@@ -86,12 +96,23 @@ const TabbedLayout: React.FC = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {committees[selectedTab]?.map((member) => (
-            <Card key={member.name} member={member} />
+        <motion.div
+          key={selectedTab}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className={`grid grid-cols-1 ${isLeadership ? "md:grid-cols-3" : "gap-x-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}`}
+        >
+          {committees[selectedTab]?.map((member, index) => (
+            <Card
+              key={member.name}
+              member={member}
+              index={index}
+              isLast={index === committees[selectedTab].length - 1}
+              variant={isLeadership ? "leadership" : "directory"}
+            />
           ))}
-        </div>
-        <div className="opacity-0">je</div>
+        </motion.div>
       </div>
     </section>
   );
