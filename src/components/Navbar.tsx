@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-import SideDrawer from "./SideDrawer";
 import { useModal } from "@/context/ModalContext";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const links = [
   {
@@ -17,15 +17,10 @@ const links = [
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const { openModal } = useModal();
-  console.log(openModal);
+  const { pathname } = useRouter();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const toggleDrawer = () => setIsDrawerOpen((prev) => !prev);
-  const toggleDropdown = (index: number) =>
-    setActiveDropdown(activeDropdown === index ? null : index);
   const handleButtonClick = () => {
     openModal();
     setIsMenuOpen(false);
@@ -33,23 +28,28 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="text-black py-6 relative">
-        <div className="px-4 md:px-20 container mx-auto">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="w-36 h-full">
+      <nav className="sticky top-0 z-40 border-b border-slate-900/10 bg-body/95 text-blu backdrop-blur">
+        <div className="container mx-auto px-5 md:px-20">
+          <div className="flex h-20 items-center justify-between md:h-24">
+            <Link href="/" className="w-32 shrink-0 md:w-36" aria-label="Minsol home">
               <img
                 src="/images/logo.png"
-                className="w-full h-full object-cover"
+                className="h-auto w-full object-contain"
                 alt="Logo"
               />
             </Link>
 
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden items-center gap-8 lg:flex">
               {links.map((link, index) => (
                 <div key={index} className="relative">
                   <Link
                     href={link.path}
-                    className="hover:underline font-medium"
+                    aria-current={pathname === link.path ? "page" : undefined}
+                    className={`relative py-3 text-sm font-medium tracking-[0.01em] transition-colors after:absolute after:bottom-1 after:left-0 after:h-px after:bg-main after:transition-all ${
+                      pathname === link.path
+                        ? "text-blu after:w-full"
+                        : "text-slate-600 after:w-0 hover:text-blu hover:after:w-full"
+                    }`}
                   >
                     {link.label}
                   </Link>
@@ -59,12 +59,18 @@ const Navbar: React.FC = () => {
 
             <button
               onClick={openModal}
-              className="bg-main px-4 py-2 rounded-lg text-white hover:bg-orange-700 hidden md:flex"
+              className="hidden items-center rounded-sm bg-main px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#51362a] focus-visible:outline-offset-4 md:flex"
             >
               Contact Us
             </button>
 
-            <button className="block md:hidden text-3xl" onClick={toggleMenu}>
+            <button
+              className="rounded-sm p-2 text-blu transition-colors hover:bg-black/5 lg:hidden"
+              onClick={toggleMenu}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
               <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} width="24" />
             </button>
           </div>
@@ -77,20 +83,26 @@ const Navbar: React.FC = () => {
           )}
 
           {isMenuOpen && (
-            <div className="fixed top-0 right-0 w-[90%] h-full bg-main text-white z-50 p-6">
+            <div
+              id="mobile-navigation"
+              className="fixed right-0 top-0 z-50 h-full w-[86%] max-w-sm bg-blu p-7 text-white shadow-2xl"
+            >
               <button
-                className="text-3xl mb-6"
+                className="mb-12 rounded-sm p-2 text-3xl transition-colors hover:bg-white/10"
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close Menu"
               >
                 <Icon icon="mdi:close" />
               </button>
-              <ul className="space-y-4">
+              <ul className="space-y-1">
                 {links.map((link, index) => (
                   <li key={index}>
                     <Link
                       href={link.path}
-                      className="block hover:underline text-lg mb-6"
+                      aria-current={pathname === link.path ? "page" : undefined}
+                      className={`block border-b border-white/10 py-4 text-lg transition-colors ${
+                        pathname === link.path ? "text-secondary" : "hover:text-secondary"
+                      }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {link.label}
@@ -100,18 +112,12 @@ const Navbar: React.FC = () => {
                 <li>
                   <button
                     onClick={handleButtonClick}
-                    className="bg-black px-8 py-2 rounded-lg w-max text-left"
+                    className="mt-8 rounded-sm bg-secondary px-5 py-3 text-sm font-semibold text-blu"
                   >
                     Contact Us
                   </button>
                 </li>
               </ul>
-            </div>
-          )}
-
-          {isDrawerOpen && (
-            <div className="hidden md:block">
-              <SideDrawer closeDrawer={toggleDrawer} />
             </div>
           )}
         </div>

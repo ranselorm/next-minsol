@@ -6,12 +6,18 @@ import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ContactModal from "@/components/ContactModal";
 import { Analytics } from "@vercel/analytics/next";
+import localFont from "next/font/local";
 
 const client = new QueryClient();
+const geist = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <div className={geist.variable}>
       <QueryClientProvider client={client}>
         <ModalProvider>
           <Navbar />
@@ -21,6 +27,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Footer />
         </ModalProvider>
       </QueryClientProvider>
-    </>
+    </div>
   );
 }

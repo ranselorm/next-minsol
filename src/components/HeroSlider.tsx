@@ -8,32 +8,32 @@ const slides = [
     title: "Welcome to Minsol Limited",
     description:
       "Your premier partner in consultancy and logistics for the mineral resources industry. We specialize in providing innovative solutions across a broad spectrum of services",
-    buttonText: "Learn More",
-    link: "#",
+    buttonText: "Explore our services",
+    link: "/services",
   },
   {
     image: "/images/manu.jpg",
     title: "Manufacturing and Distribution",
     description:
       "A wide range of high-quality products, from ground support systems and mill liners to grinding media and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
-    buttonText: "ME Digital Lab",
-    link: "#",
+    buttonText: "Explore products",
+    link: "/products",
   },
   {
     image: "/images/train.jpg",
     title: "Training for Mining/Processing Personnel",
     description:
       "Specialized programs to enhance the skills and safety of operational teams",
-    buttonText: "ME FIT Grinding",
-    link: "#",
+    buttonText: "Explore our services",
+    link: "/services",
   },
   {
     image: "/images/tech.jpg",
     title: "Technical and Engineering Services",
     description:
       "Comprehensive engineering, procurement, and construction management (EPCM) solutions.",
-    buttonText: "ME FIT Grinding",
-    link: "#",
+    buttonText: "Explore our services",
+    link: "/services",
   },
 ];
 
@@ -59,11 +59,16 @@ const HeroSlider: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-[480px] overflow-hidden">
+    <section
+      className="relative h-[560px] overflow-hidden md:h-[620px]"
+      aria-roledescription="carousel"
+      aria-label="Featured Minsol services"
+    >
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+          aria-hidden={index !== currentSlide}
+          className={`absolute inset-0 transition-opacity duration-700 ease-out ${
             index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
           style={{
@@ -72,36 +77,47 @@ const HeroSlider: React.FC = () => {
             backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center text-center text-white p-6">
-            <h2 className=" text-2xl md:text-5xl font-bold md:max-w-3xl capitalize">
-              {slide.title}
-            </h2>
-            <p className="my-6 max-w-2xl text-lg">{slide.description}</p>
-            <Link
-              href={slide.link}
-              className="bg-transparent border-2 border-white px-4 py-2 rounded-md text-sm mt-8 items-center gap-x-1 font-bold hidden"
-            >
-              {slide.buttonText}
-              <Icon icon="ep:right" className="text-white" />
-            </Link>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#101c25]/95 via-[#101c25]/75 to-[#101c25]/20" />
+          <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl items-center px-5 md:px-20">
+            <div className="max-w-2xl text-left text-white">
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-secondary md:text-sm">
+                Mineral resources solutions
+              </p>
+              <h1 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-[-0.035em] md:text-6xl">
+                {slide.title}
+              </h1>
+              <p className="my-7 max-w-xl text-base leading-7 text-white/80 md:text-lg md:leading-8">
+                {slide.description}
+              </p>
+              <Link
+                href={slide.link}
+                tabIndex={index === currentSlide ? 0 : -1}
+                className="inline-flex items-center gap-2 rounded-sm bg-secondary px-5 py-3 text-sm font-semibold text-blu transition-colors hover:bg-[#e0b84e]"
+              >
+                {slide.buttonText}
+                <Icon icon="ep:right" width="18" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
       ))}
 
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      <div className="absolute bottom-8 left-5 z-20 flex gap-2 md:left-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => handleIndicatorClick(index)}
-            className={` ${
+            aria-label={`Show slide ${index + 1}`}
+            aria-current={index === currentSlide ? "true" : undefined}
+            className={`transition-all duration-300 ${
               index === currentSlide
-                ? "bg-main w-12 h-1 rounded"
-                : "bg-gray-400 w-4 h-1 rounded"
+                ? "h-1 w-10 bg-secondary"
+                : "h-1 w-5 bg-white/50 hover:bg-white"
             }`}
           ></button>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

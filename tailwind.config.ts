@@ -10,12 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        main: "#79513c",
-        secondary: "#f5c614",
-        blu: "#1e2b4b",
-        grey: "#757575",
-        accent: "#e7ebf3",
-        body: "#e1ddd4",
+        main: "#694735",
+        secondary: "#c99c31",
+        blu: "#19232d",
+        grey: "#66717d",
+        accent: "#e8ecec",
+        body: "#f5f4f0",
       },
       borderRadius: {
         lg: "var(--radius)",
