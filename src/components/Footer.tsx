@@ -37,27 +37,39 @@ const footerLinks = {
 };
 
 const Footer: React.FC = () => (
-  <footer className="bg-black py-8 text-white">
-    <div className="site-shell grid grid-cols-1 gap-8 md:grid-cols-3">
-      <Link href="/" className="md:w-full h-20">
+  <footer className="bg-blu pt-16 text-white">
+    <div className="site-shell grid gap-12 border-b border-white/15 pb-12 lg:grid-cols-[1.35fr_0.7fr_1fr]">
+      <div>
+        <Link href="/" className="block w-44" aria-label="Minsol home">
         <img
           src="/images/sol.png"
-          className="w-full h-full object-cover"
+          className="h-auto w-full object-contain"
           alt="Logo"
         />
-      </Link>
+        </Link>
+        <p className="mt-6 max-w-sm text-sm leading-6 text-white/65">
+          Technical, operational, and logistics support for the mineral resources industry.
+        </p>
+        <a
+          href="mailto:operationsgh@minsolltd.com"
+          className="mt-6 inline-flex items-center gap-2 border-b border-secondary pb-1 text-sm font-semibold text-secondary transition-colors hover:text-white"
+        >
+          Start a conversation <span aria-hidden="true">→</span>
+        </a>
+      </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">Popular Links</h3>
-        <ul className="space-y-2">
+        <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
+          Explore
+        </h3>
+        <ul className="space-y-3 text-sm text-white/75">
           {footerLinks.company.map((link, index) => (
             <li key={index}>
               <Link
                 href={link.url}
-                className="hover:text-gray-300 flex items-center"
+                className="inline-flex items-center gap-2 transition-colors hover:text-white"
               >
-                {link.label}{" "}
-                <Icon icon="mdi:arrow-right" width="16" className="ml-2" />
+                {link.label}
               </Link>
             </li>
           ))}
@@ -65,21 +77,32 @@ const Footer: React.FC = () => (
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">Contact</h3>
-        <ul className="space-y-2">
+        <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
+          Contact
+        </h3>
+        <ul className="space-y-4 text-sm text-white/75">
           {footerLinks.contact.map((link, index) => (
-            <li key={index} className="flex">
-              <Icon icon={link.icon} width="20" className="mr-2" />
-              <p className="hover:text-gray-300 flex items-center">
-                {link.label}
-              </p>
+            <li key={index} className="flex items-start gap-3">
+              <Icon icon={link.icon} width="18" className="mt-0.5 shrink-0 text-secondary" />
+              {index === 0 ? (
+                <a className="transition-colors hover:text-white" href={`mailto:${link.label}`}>
+                  {link.label}
+                </a>
+              ) : index === 1 ? (
+                <a className="transition-colors hover:text-white" href="tel:+233302543667">
+                  {link.label}
+                </a>
+              ) : (
+                <span>{link.label}</span>
+              )}
             </li>
           ))}
         </ul>
       </div>
     </div>
-    <div className="site-shell mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
-      © 2026 Minsol. All rights reserved.
+    <div className="site-shell flex flex-col gap-3 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 Minsol Limited. All rights reserved.</p>
+      <p>Accra, Ghana</p>
     </div>
   </footer>
 );

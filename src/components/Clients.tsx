@@ -33,9 +33,21 @@ const clients: ClientType[] = [
 const Clients = () => {
   return (
     <TooltipProvider>
-      <section className="py-12">
+      <section className="py-20 md:py-24">
         <div className="site-shell">
-          <h3 className="section-title text-center">Our Clients</h3>
+          <div className="mb-10 flex flex-col justify-between gap-4 border-b border-slate-900/10 pb-6 md:mb-12 md:flex-row md:items-end">
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-main">
+                Trusted partnerships
+              </p>
+              <h2 className="text-3xl font-semibold tracking-[-0.03em] text-blu md:text-5xl">
+                Our clients
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-6 text-slate-600 md:text-right md:text-base">
+              Supporting mining and mineral processing operations across Africa.
+            </p>
+          </div>
 
           <Marquee
             speed={50}
@@ -44,13 +56,13 @@ const Clients = () => {
             gradientWidth={100}
           >
             {clients.map((client, index) => (
-              <div className="mx-8 w-32" key={index}>
+              <div className="group mx-7 flex h-20 w-36 items-center justify-center" key={index}>
                 <Tooltip>
                   <TooltipTrigger>
                     <img
                       src={`/client/${client.image}`}
                       alt={client.title || "Client"}
-                      className="w-full h-auto"
+                      className="h-auto max-h-16 w-full object-contain grayscale opacity-65 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
                     />
                   </TooltipTrigger>
                   {client.title && (
