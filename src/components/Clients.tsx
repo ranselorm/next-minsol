@@ -34,7 +34,7 @@ const Clients = () => {
   return (
     <TooltipProvider>
       <section className="py-12">
-        <div className="container mx-auto px-4 md:px-20">
+        <div className="site-shell">
           <h3 className="section-title text-center">Our Clients</h3>
 
           <Marquee

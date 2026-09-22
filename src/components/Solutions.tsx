@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 const solutions = [
   {
@@ -46,34 +45,52 @@ interface SolutionsProps {
 
 const Solutions: React.FC<SolutionsProps> = ({ onSolutionClick }) => {
   return (
-    <section className="py-16">
-      <div className="px-4 md:px-20 container mx-auto">
-        <h2 className="section-title">Solutions</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="py-20 md:py-24">
+      <div className="site-shell">
+        <div className="mb-10 flex flex-col justify-between gap-5 md:mb-12 md:flex-row md:items-end">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-main">
+              What we do
+            </p>
+            <h2 className="max-w-xl text-3xl font-semibold tracking-[-0.03em] text-blu md:text-5xl">
+              Solutions built for operational confidence.
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-slate-600 md:text-base">
+            Specialist expertise across the mineral resources value chain.
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className="bg-main rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-[370px] w-full"
+              className="group flex min-h-[380px] flex-col overflow-hidden border border-slate-900/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-main/30 hover:shadow-xl hover:shadow-slate-900/10"
             >
-              <div className="h-[200px] w-full overflow-hidden">
+              <div className="h-44 w-full overflow-hidden">
                 <img
                   src={solution.image}
                   alt={solution.title}
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="flex flex-col justify-between p-4 text-white h-full">
+              <div className="flex flex-1 flex-col p-5">
                 <div>
-                  <h3 className="text-lg font-bold mb-2">{solution.title}</h3>
-                  <p className="mb-4 text-sm text-gray-300">
+                  <p className="mb-3 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-main">
+                    0{index + 1}
+                  </p>
+                  <h3 className="mb-2 text-xl font-semibold leading-7 tracking-[-0.02em] text-blu">
+                    {solution.title}
+                  </h3>
+                  <p className="text-sm leading-6 text-slate-600">
                     {solution.description}
                   </p>
                 </div>
                 <button
-                  className="mt-auto inline-block font-semibold border border-white px-4 py-2 rounded-lg text-sm text-white hover:bg-main transition-colors duration-150 text-center"
+                  className="mt-5 inline-flex w-fit items-center gap-2 border-b border-main pb-1 text-sm font-semibold text-main transition-colors hover:border-blu hover:text-blu focus-visible:rounded-sm"
                   onClick={() => onSolutionClick(solution)}
                 >
-                  {solution.buttonText} &rarr;
+                  {solution.buttonText}
+                  <span aria-hidden="true">→</span>
                 </button>
               </div>
             </div>

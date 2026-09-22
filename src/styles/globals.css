@@ -24,6 +24,10 @@ body {
   .section-title {
     @apply text-2xl md:text-4xl font-bold text-main mb-8;
   }
+
+  .site-shell {
+    @apply container mx-auto px-5 md:px-10;
+  }
 }
 
 @layer base {

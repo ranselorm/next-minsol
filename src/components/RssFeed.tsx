@@ -38,15 +38,22 @@ export default function RssFeed() {
   });
 
   return (
-    <section className="py-12 bg-white">
-      <div className="container mx-auto px-4 md:px-20">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="section-title">{"News"}</h2>
+    <section className="bg-white py-20 md:py-24">
+      <div className="site-shell">
+        <div className="mb-10 flex flex-col justify-between gap-5 md:mb-12 md:flex-row md:items-end">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-main">
+              Insights and updates
+            </p>
+            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-blu md:text-5xl">
+              Latest news
+            </h2>
+          </div>
           <Link
             href="/newsroom"
-            className="text-secondary font-semibold flex items-center"
+            className="inline-flex w-fit items-center gap-2 border-b border-main pb-1 text-sm font-semibold text-main transition-colors hover:border-blu hover:text-blu"
           >
-            More &rarr;
+            View all news <span aria-hidden="true">→</span>
           </Link>
         </div>
 
@@ -55,13 +62,13 @@ export default function RssFeed() {
             Error: {error?.message}
           </p>
         ) : isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {Array.from({ length: 3 }).map((_, index) => (
               <NewsPlaceHolder key={index} />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {rssData.slice(0, 3).map((item, index) => (
               <NewsCard
                 key={index}

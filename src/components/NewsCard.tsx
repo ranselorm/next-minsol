@@ -18,37 +18,40 @@ const NewsCard: React.FC<NewsCardProps> = ({
   link,
   contentSnippet,
 }) => {
-  console.log(categories);
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-      <div className="relative group">
-        <img src={image} className="w-full h-48 object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"></div>
+    <article className="group flex h-full flex-col overflow-hidden border border-slate-900/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-main/30 hover:shadow-xl hover:shadow-slate-900/10">
+      <div className="overflow-hidden">
+        <img
+          src={image}
+          alt=""
+          className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
-      <div className="flex flex-col justify-between p-4 h-full">
+      <div className="flex flex-1 flex-col p-6">
         <div>
-          <div className="flex items-center mb-4 justify-between">
-            <p className="text-sm text-main">
+          <div className="mb-5 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.12em] text-main">
+            <p>
               {categories?.slice(0, 1).map((cat, index) => (
-                <span key={index} className="">
-                  {cat}
-                </span>
+                <span key={index}>{cat}</span>
               ))}
             </p>
-            <span className="text-sm text-main">{date}</span>
+            <time>{date}</time>
           </div>
 
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">{title}</h3>
+          <h3 className="text-xl font-semibold leading-7 tracking-[-0.02em] text-blu">
+            {title}
+          </h3>
         </div>
         <a
           href={`${link}`}
           target="_blank"
-          className="text-secondary font-semibold mt-4 self-start"
+          rel="noreferrer"
+          className="mt-7 inline-flex w-fit items-center gap-2 border-b border-main pb-1 text-sm font-semibold text-main transition-colors hover:border-blu hover:text-blu"
         >
-          Read &rarr;
+          Read article <span aria-hidden="true">→</span>
         </a>
       </div>
-    </div>
+    </article>
   );
 };
 

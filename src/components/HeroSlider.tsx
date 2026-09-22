@@ -78,7 +78,7 @@ const HeroSlider: React.FC = () => {
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#101c25]/95 via-[#101c25]/75 to-[#101c25]/20" />
-          <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl items-center px-5 md:px-20">
+          <div className="site-shell relative z-10 flex h-full items-center">
             <div className="max-w-2xl text-left text-white">
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-secondary md:text-sm">
                 Mineral resources solutions

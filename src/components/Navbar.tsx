@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className="sticky top-0 z-40 border-b border-slate-900/10 bg-body/95 text-blu backdrop-blur">
-        <div className="container mx-auto px-5 md:px-20">
+        <div className="site-shell">
           <div className="flex h-20 items-center justify-between md:h-24">
             <Link href="/" className="w-32 shrink-0 md:w-36" aria-label="Minsol home">
               <img

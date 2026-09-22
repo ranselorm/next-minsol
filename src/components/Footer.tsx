@@ -37,8 +37,8 @@ const footerLinks = {
 };
 
 const Footer: React.FC = () => (
-  <footer className="bg-black text-white py-8 px-4 md:px-28">
-    <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+  <footer className="bg-black py-8 text-white">
+    <div className="site-shell grid grid-cols-1 gap-8 md:grid-cols-3">
       <Link href="/" className="md:w-full h-20">
         <img
           src="/images/sol.png"
@@ -78,7 +78,7 @@ const Footer: React.FC = () => (
         </ul>
       </div>
     </div>
-    <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
+    <div className="site-shell mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
       © 2026 Minsol. All rights reserved.
     </div>
   </footer>
