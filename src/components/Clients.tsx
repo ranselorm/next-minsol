@@ -1,4 +1,5 @@
 import Marquee from "react-fast-marquee";
+import Reveal from "./Reveal";
 import {
   Tooltip,
   TooltipContent,
@@ -35,7 +36,8 @@ const Clients = () => {
     <TooltipProvider>
       <section className="py-20 md:py-24">
         <div className="site-shell">
-          <div className="mb-10 flex flex-col justify-between gap-4 border-b border-slate-900/10 pb-6 md:mb-12 md:flex-row md:items-end">
+          <Reveal className="mb-10 md:mb-12">
+            <div className="flex flex-col justify-between gap-4 border-b border-slate-900/10 pb-6 md:flex-row md:items-end">
             <div>
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-main">
                 Trusted partnerships
@@ -47,14 +49,16 @@ const Clients = () => {
             <p className="max-w-sm text-sm leading-6 text-slate-600 md:text-right md:text-base">
               Supporting mining and mineral processing operations across Africa.
             </p>
-          </div>
+            </div>
+          </Reveal>
 
-          <Marquee
-            speed={50}
-            pauseOnHover={true}
-            gradient={true}
-            gradientWidth={100}
-          >
+          <Reveal delay={100}>
+            <Marquee
+              speed={50}
+              pauseOnHover={true}
+              gradient={true}
+              gradientWidth={100}
+            >
             {clients.map((client, index) => (
               <div className="group mx-7 flex h-20 w-36 items-center justify-center" key={index}>
                 <Tooltip>
@@ -75,7 +79,8 @@ const Clients = () => {
                 </Tooltip>
               </div>
             ))}
-          </Marquee>
+            </Marquee>
+          </Reveal>
         </div>
       </section>
     </TooltipProvider>

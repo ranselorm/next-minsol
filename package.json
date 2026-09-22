@@ -22,6 +22,7 @@
     "cheerio": "^1.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^13.4.1",
     "i18next": "^24.0.5",
     "i18next-browser-languagedetector": "^8.0.0",
     "lucide-react": "^0.462.0",

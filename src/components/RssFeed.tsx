@@ -3,6 +3,7 @@ import moment from "moment";
 import Link from "next/link";
 import NewsCard from "./NewsCard";
 import { NewsPlaceHolder } from "./NewsPlaceHolder";
+import Reveal from "./Reveal";
 
 const formatDate = (dateString: string): string => {
   return moment(dateString).format("MMMM Do, YYYY");
@@ -40,7 +41,8 @@ export default function RssFeed() {
   return (
     <section className="bg-white py-20 md:py-24">
       <div className="site-shell">
-        <div className="mb-10 flex flex-col justify-between gap-5 md:mb-12 md:flex-row md:items-end">
+        <Reveal className="mb-10 md:mb-12">
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-main">
               Insights and updates
@@ -55,7 +57,8 @@ export default function RssFeed() {
           >
             View all news <span aria-hidden="true">→</span>
           </Link>
-        </div>
+          </div>
+        </Reveal>
 
         {isError ? (
           <p style={{ color: "red", textAlign: "center" }}>
@@ -64,20 +67,23 @@ export default function RssFeed() {
         ) : isLoading ? (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {Array.from({ length: 3 }).map((_, index) => (
-              <NewsPlaceHolder key={index} />
+              <Reveal key={index} delay={index * 80}>
+                <NewsPlaceHolder />
+              </Reveal>
             ))}
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {rssData.slice(0, 3).map((item, index) => (
-              <NewsCard
-                key={index}
-                title={item.title}
-                date={formatDate(item.pubDate || "")}
-                categories={item.categories}
-                imageUrl={item.imageUrl || "/placeholder-image.jpg"}
-                link={item.link}
-              />
+              <Reveal key={index} delay={index * 80} className="h-full">
+                <NewsCard
+                  title={item.title}
+                  date={formatDate(item.pubDate || "")}
+                  categories={item.categories}
+                  imageUrl={item.imageUrl || "/placeholder-image.jpg"}
+                  link={item.link}
+                />
+              </Reveal>
             ))}
           </div>
         )}

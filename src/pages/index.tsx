@@ -6,6 +6,9 @@ import SolutionDetails from "@/components/SolutionDetails";
 import Pillars from "@/components/Pillars";
 import Clients from "@/components/Clients";
 import RssFeed from "@/components/RssFeed";
+import WhyMinsol from "@/components/WhyMinsol";
+import OperationalFootprint from "@/components/OperationalFootprint";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
   const { openSheet } = useModal();
@@ -20,6 +23,8 @@ export default function Home() {
       <HeroSlider />
       <Solutions onSolutionClick={handleDialogOpen} />
       <SolutionDetails selectedItem={selectedItem} />
+      <Reveal><WhyMinsol /></Reveal>
+      <Reveal><OperationalFootprint /></Reveal>
       <RssFeed />
       <Pillars />
       <Clients />

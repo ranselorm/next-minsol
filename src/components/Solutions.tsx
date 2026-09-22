@@ -1,4 +1,5 @@
 import React from "react";
+import Reveal from "./Reveal";
 
 const solutions = [
   {
@@ -47,7 +48,8 @@ const Solutions: React.FC<SolutionsProps> = ({ onSolutionClick }) => {
   return (
     <section className="py-20 md:py-24">
       <div className="site-shell">
-        <div className="mb-10 flex flex-col justify-between gap-5 md:mb-12 md:flex-row md:items-end">
+        <Reveal className="mb-10 md:mb-12">
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-main">
               What we do
@@ -59,13 +61,12 @@ const Solutions: React.FC<SolutionsProps> = ({ onSolutionClick }) => {
           <p className="max-w-sm text-sm leading-6 text-slate-600 md:text-base">
             Specialist expertise across the mineral resources value chain.
           </p>
-        </div>
+          </div>
+        </Reveal>
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {solutions.map((solution, index) => (
-            <div
-              key={index}
-              className="group flex min-h-[380px] flex-col overflow-hidden border border-slate-900/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-main/30 hover:shadow-xl hover:shadow-slate-900/10"
-            >
+            <Reveal key={index} delay={index * 80} className="h-full">
+              <div className="group flex h-full min-h-[380px] flex-col overflow-hidden border border-slate-900/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-main/30 hover:shadow-xl hover:shadow-slate-900/10">
               <div className="h-44 w-full overflow-hidden">
                 <img
                   src={solution.image}
@@ -93,7 +94,8 @@ const Solutions: React.FC<SolutionsProps> = ({ onSolutionClick }) => {
                   <span aria-hidden="true">→</span>
                 </button>
               </div>
-            </div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
