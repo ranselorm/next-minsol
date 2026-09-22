@@ -1,86 +1,71 @@
-// components/Vision.tsx
 import { Icon } from "@iconify/react";
-import React from "react";
+import Reveal from "./Reveal";
 
-const Vision: React.FC = () => {
-  return (
-    <section className="flex flex-col md:flex-row justify-between items-stretch py-10 w-full font-primary">
-      <div className="flex-1 bg-white w-full ">
-        <div className="flex flex-col container mx-auto">
-          <div className="px-4 md:px-20 py-8">
-            <h3 className="text-2xl mb-4 text-left">Vision</h3>
-            <p className="text-left text-grey leading-relaxed">
-              To be the leading provider of innovative mining consultancy and
-              services across Sub-Saharan Africa, delivering exceptional value
-              and sustainable solutions to meet the evolving needs of the
-              mineral resources sector. Through excellence, innovation, and
-              strategic presence, we aim to revolutionize the mining industry
-              and empower our clients for long-term success.
-            </p>
+const values = [
+  { title: "Excellence", description: "High-quality services and solutions that set benchmarks for performance and reliability." },
+  { title: "Integrity", description: "Transparency, honesty, and accountability in every relationship and decision." },
+  { title: "Adaptability", description: "Relevant, effective support as mining operations and industry needs evolve." },
+  { title: "Collaboration", description: "Close partnership with clients and stakeholders to deliver positive outcomes." },
+  { title: "Sustainability", description: "Environmental care, social responsibility, and economic growth for the long term." },
+];
+
+const Vision = () => (
+  <>
+    <section className="bg-white py-20 md:py-24">
+      <div className="site-shell">
+        <Reveal className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Vision</p>
+            <h2 className="max-w-md text-3xl font-semibold leading-tight tracking-[-0.03em] text-blu md:text-5xl">
+              A leading regional partner for mineral resources.
+            </h2>
           </div>
-        </div>
-        <div className="px-4 md:px-20 py-8">
-          <h3 className="text-2xl mb-4 text-left">Mission</h3>
-          <p className="text-left text-grey leading-relaxed">
-            At Minsol Limited, our mission is to deliver top-tier mining
-            consultancy and logistics services that drive operational excellence
-            and innovation. We are dedicated to understanding and addressing the
-            unique challenges of the mining industry, providing solutions that
-            ensure efficiency, compliance, and growth for our clients.
+          <p className="max-w-2xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9">
+            To be the leading provider of innovative mining consultancy and services across Sub-Saharan Africa, delivering exceptional value and sustainable solutions to meet the evolving needs of the mineral resources sector. Through excellence, innovation, and strategic presence, we aim to empower clients for long-term success.
           </p>
-        </div>
+        </Reveal>
       </div>
+    </section>
 
-      {/* Values Column */}
-      <div className="flex-1 bg-main text-white w-full px-4 md:px-8 py-8">
-        <h3 className="text-2xl mb-5">Our Values</h3>
-        <div className="flex flex-col gap-y-8 text-[15px]">
-          <div className="flex items-start gap-x-1">
-            <Icon icon="carbon:checkmark-filled" className="w-10 mt-1" />
-            <p className="text-left">
-              <span className="mr-1">Excellence:</span> We are committed to
-              delivering the highest quality services and solutions, setting
-              benchmarks for performance and reliability in the mining sector
-            </p>
+    <section className="bg-blu py-20 text-white md:py-24">
+      <div className="site-shell">
+        <Reveal className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Mission</p>
+            <h2 className="max-w-md text-3xl font-semibold leading-tight tracking-[-0.03em] md:text-5xl">
+              Practical value in every engagement.
+            </h2>
           </div>
-          <div className="flex items-start gap-x-1">
-            <Icon icon="carbon:checkmark-filled" className="w-10 mt-1" />
-            <p className="text-left">
-              <span className="mr-1">Integrity:</span> We conduct our business
-              with transparency, honesty, and accountability, fostering trust
-              and long-term relationships with our stakeholders
-            </p>
+          <p className="max-w-2xl border-t border-white/20 pt-7 text-lg leading-8 text-white/75 md:text-xl md:leading-9 lg:border-l lg:border-t-0 lg:pl-16 lg:pt-0">
+            At Minsol Limited, our mission is to deliver top-tier mining consultancy and logistics services that drive operational excellence and innovation. We understand the unique challenges of the mining industry and provide solutions that support efficiency, compliance, and growth.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+
+    <section className="bg-accent py-20 md:py-24">
+      <div className="site-shell">
+        <Reveal className="mb-10 flex flex-col justify-between gap-5 md:mb-12 md:flex-row md:items-end">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Our values</p>
+            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-blu md:text-5xl">How we work.</h2>
           </div>
-          <div className="flex items-start gap-x-1">
-            <Icon icon="carbon:checkmark-filled" className="w-10 mt-1" />
-            <p className="text-left">
-              <span className="mr-1">Adaptability:</span> We respond dynamically
-              to the evolving needs of the mining industry, ensuring that our
-              services remain relevant and effective in a changing environment
-            </p>
-          </div>
-          <div className="flex items-start gap-x-1">
-            <Icon icon="carbon:checkmark-filled" className="w-10 mt-1" />
-            <p className="text-left">
-              <span className="mr-1">Collaboration:</span> We believe in working
-              closely with our clients and partners to achieve mutual success
-              and drive positive outcomes in every project we undertake
-            </p>
-          </div>
-          <div className="flex items-start gap-x-1">
-            <Icon icon="carbon:checkmark-filled" className="w-10 mt-1" />
-            <p className="text-left">
-              <span className="mr-1">Sustainability:</span> We prioritize
-              sustainability by focusing on environmental care, social
-              responsibility, and economic growth. Our goal is to support the
-              mining industry's long-term health and the well-being of
-              communities.
-            </p>
-          </div>
+          <p className="max-w-sm text-sm leading-6 text-slate-600 md:text-base">The principles that guide our teams, partnerships, and delivery.</p>
+        </Reveal>
+        <div className="grid border-l border-t border-slate-900/15 sm:grid-cols-2 lg:grid-cols-3">
+          {values.map((value, index) => (
+            <Reveal key={value.title} delay={index * 70} className="h-full">
+              <article className="h-full border-b border-slate-900/15 py-7 pr-7 sm:px-7 sm:py-8 sm:odd:border-r lg:[&:nth-child(3n+1)]:pl-6 lg:[&:nth-child(3n+1)]:pr-8 lg:[&:nth-child(3n+2)]:border-r lg:[&:nth-child(3n+2)]:pl-8 lg:[&:nth-child(3n+2)]:pr-8 lg:[&:nth-child(3n+3)]:pl-8 lg:[&:nth-child(3n+3)]:pr-0">
+                <Icon icon="carbon:checkmark-filled" className="h-5 w-5 text-main" />
+                <h3 className="mt-5 text-xl font-semibold tracking-[-0.02em] text-blu">{value.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{value.description}</p>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
-  );
-};
+  </>
+);
 
 export default Vision;

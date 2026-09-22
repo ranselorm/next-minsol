@@ -13,21 +13,23 @@ const ProductHero: React.FC<ProductsHeroProps> = ({
 }) => {
   return (
     <section
-      className="relative bg-gray-100 h-[400px] flex items-center justify-center text-center"
+      className="relative flex h-[420px] items-end overflow-hidden md:h-[500px]"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-75"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#101c25]/95 via-[#101c25]/70 to-[#101c25]/20" />
 
-      <div className="relative z-10 flex flex-col items-center px-6 py-16 lg:py-24">
-        <h1 className="text-white text-4xl md:text-5xl font-bold uppercase tracking-wide">
+      <div className="site-shell relative z-10 pb-14 md:pb-20">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+          Minsol Limited
+        </p>
+        <h1 className="max-w-2xl text-4xl font-semibold leading-[1.08] tracking-[-0.035em] text-white md:text-6xl">
           {title}
         </h1>
-        <p className="text-white text-lg md:text-xl mt-4 max-w-lg">
+        <p className="mt-5 max-w-xl text-base leading-7 text-white/80 md:text-lg md:leading-8">
           {subtitle}
         </p>
       </div>
