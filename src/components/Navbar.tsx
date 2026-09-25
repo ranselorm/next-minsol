@@ -1,127 +1,151 @@
-import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-import { useModal } from "@/context/ModalContext";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useModal } from "@/context/ModalContext";
 
 const links = [
-  {
-    label: "Home",
-    path: "/",
-  },
+  { label: "Home", path: "/" },
   { label: "About Us", path: "/about" },
   { label: "Services", path: "/services" },
   { label: "Products", path: "/products" },
   { label: "Newsroom", path: "/newsroom" },
 ];
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { openModal } = useModal();
   const { pathname } = useRouter();
+  const reduceMotion = useReducedMotion();
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const handleButtonClick = () => {
-    openModal();
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isMenuOpen]);
+
+  const openContact = () => {
     setIsMenuOpen(false);
+    window.setTimeout(openModal, 120);
   };
 
   return (
     <>
-      <nav className="sticky top-0 z-40 border-b border-slate-900/10 bg-body/95 text-blu backdrop-blur">
-        <div className="site-shell">
-          <div className="flex h-20 items-center justify-between md:h-24">
-            <Link href="/" className="w-32 shrink-0 md:w-36" aria-label="Minsol home">
-              <img
-                src="/images/logo.png"
-                className="h-auto w-full object-contain"
-                alt="Logo"
-              />
-            </Link>
+      <header className="sticky top-0 z-40 border-b border-slate-900/10 bg-body/95 text-blu backdrop-blur-md">
+        <div className="site-shell grid h-[76px] grid-cols-[1fr_auto] items-center lg:h-[88px] lg:grid-cols-[1fr_auto_1fr]">
+          <Link href="/" className="flex items-center" aria-label="Minsol home">
+            <img src="/images/logo.png" className="h-auto w-28 object-contain lg:w-32" alt="Minsol Limited" />
+          </Link>
 
-            <div className="hidden items-center gap-8 lg:flex">
-              {links.map((link, index) => (
-                <div key={index} className="relative">
-                  <Link
-                    href={link.path}
-                    aria-current={pathname === link.path ? "page" : undefined}
-                    className={`relative py-3 text-sm font-medium tracking-[0.01em] transition-colors after:absolute after:bottom-1 after:left-0 after:h-px after:bg-main after:transition-all ${
-                      pathname === link.path
-                        ? "text-blu after:w-full"
-                        : "text-slate-600 after:w-0 hover:text-blu hover:after:w-full"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </div>
-              ))}
-            </div>
+          <nav className="hidden h-full items-stretch lg:flex" aria-label="Primary navigation">
+            {links.map((link) => {
+              const isActive = pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`group relative flex items-center px-5 text-[0.9375rem] font-medium transition-colors ${
+                    isActive ? "text-blu" : "text-slate-500 hover:text-blu"
+                  }`}
+                >
+                  {link.label}
+                  <span className={`absolute bottom-[23px] h-px bg-main transition-all ${isActive ? "w-5" : "w-0 group-hover:w-3"}`} />
+                </Link>
+              );
+            })}
+          </nav>
 
-            <button
-              onClick={openModal}
-              className="hidden items-center rounded-sm bg-main px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#51362a] focus-visible:outline-offset-4 md:flex"
-            >
-              Contact Us
+          <div className="ml-auto flex items-center">
+            <button onClick={openModal} className="hidden border border-main bg-main px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-main lg:inline-flex" aria-label="Contact Minsol">
+              Contact us
             </button>
-
             <button
-              className="rounded-sm p-2 text-blu transition-colors hover:bg-black/5 lg:hidden"
-              onClick={toggleMenu}
+              type="button"
+              onClick={() => setIsMenuOpen(true)}
+              className="inline-flex items-center gap-2 text-sm font-medium text-blu lg:hidden"
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
-              <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} width="24" />
+              <span>Menu</span>
+              <Icon icon="mdi:menu" width="22" aria-hidden="true" />
             </button>
           </div>
-
-          {isMenuOpen && (
-            <div
-              className="fixed inset-0 z-40 bg-black bg-opacity-50"
-              onClick={() => setIsMenuOpen(false)}
-            ></div>
-          )}
-
-          {isMenuOpen && (
-            <div
-              id="mobile-navigation"
-              className="fixed right-0 top-0 z-50 h-full w-[86%] max-w-sm bg-blu p-7 text-white shadow-2xl"
-            >
-              <button
-                className="mb-12 rounded-sm p-2 text-3xl transition-colors hover:bg-white/10"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label="Close Menu"
-              >
-                <Icon icon="mdi:close" />
-              </button>
-              <ul className="space-y-1">
-                {links.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.path}
-                      aria-current={pathname === link.path ? "page" : undefined}
-                      className={`block border-b border-white/10 py-4 text-lg transition-colors ${
-                        pathname === link.path ? "text-secondary" : "hover:text-secondary"
-                      }`}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    onClick={handleButtonClick}
-                    className="mt-8 rounded-sm bg-secondary px-5 py-3 text-sm font-semibold text-blu"
-                  >
-                    Contact Us
-                  </button>
-                </li>
-              </ul>
-            </div>
-          )}
         </div>
-      </nav>
+      </header>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.aside
+            id="mobile-navigation"
+            initial={reduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0.15 : 0.24 }}
+            className="fixed inset-0 z-50 overflow-y-auto bg-body text-blu lg:hidden"
+            aria-label="Mobile navigation"
+          >
+            <div className="site-shell flex min-h-full flex-col py-6">
+              <div className="flex items-center justify-between">
+                <Link href="/" onClick={() => setIsMenuOpen(false)} className="w-28" aria-label="Minsol home">
+                  <img src="/images/logo.png" className="h-auto w-full" alt="Minsol Limited" />
+                </Link>
+                <button
+                  type="button"
+                  className="flex h-10 w-10 items-center justify-center border border-slate-900/15 text-blu"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <Icon icon="mdi:close" width="24" aria-hidden="true" />
+                </button>
+              </div>
+
+              <div className="mt-16">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-main">Explore</p>
+                <nav aria-label="Mobile primary navigation">
+                  <ul>
+                    {links.map((link, index) => {
+                      const isActive = pathname === link.path;
+                      return (
+                        <motion.li key={link.path} initial={reduceMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 0.05 + index * 0.045, duration: 0.3 }}>
+                          <Link
+                            href={link.path}
+                            onClick={() => setIsMenuOpen(false)}
+                            aria-current={isActive ? "page" : undefined}
+                            className={`flex items-baseline justify-between border-t border-slate-900/15 py-5 text-3xl font-medium tracking-[-0.04em] ${isActive ? "text-main" : "text-blu"}`}
+                          >
+                            <span>{link.label}</span>
+                            <Icon icon="mdi:arrow-up-right" width="20" className="text-main" aria-hidden="true" />
+                          </Link>
+                        </motion.li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+              </div>
+
+              <div className="mt-auto pt-12">
+                <div className="border-t border-slate-900/15 pt-6">
+                <p className="max-w-[18rem] text-sm leading-6 text-slate-600">Technical, operational, and logistics support for the mineral resources industry.</p>
+                <button onClick={openContact} className="mt-5 inline-flex bg-main px-5 py-3 text-sm font-medium text-white">
+                  Contact us
+                </button>
+                </div>
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </>
   );
 };

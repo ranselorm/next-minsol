@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 import Reveal from "./Reveal";
 
 const projects = [
@@ -28,11 +29,11 @@ const projects = [
 ];
 
 const Premier = () => (
-  <section className="bg-accent py-20 md:py-24">
+  <section className="bg-accent py-16 md:py-24">
     <div className="site-shell">
-      <Reveal className="grid gap-10 border-b border-slate-900/10 pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <Reveal className="grid gap-7 border-b border-slate-900/10 pb-10 md:gap-10 md:pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div>
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Product capability</p>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Related product capability</p>
           <h2 className="max-w-md text-3xl font-medium leading-tight tracking-[-0.03em] text-blu md:text-5xl">Premier Solutions for Mineral Processing Needs</h2>
         </div>
         <p className="max-w-2xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9">
@@ -40,14 +41,18 @@ const Premier = () => (
         </p>
       </Reveal>
 
-      <div className="mt-12 grid border-l border-t border-slate-900/15 md:mt-16 md:grid-cols-3">
+      <div className="mt-10 flex items-center justify-between gap-5 md:mt-12">
+        <p className="text-sm leading-6 text-slate-600">A focused selection from our wider product portfolio.</p>
+        <Link href="/products" className="shrink-0 border-b border-main pb-1 text-sm font-medium text-main transition-colors hover:border-blu hover:text-blu">Explore products <span aria-hidden="true">→</span></Link>
+      </div>
+      <div className="mt-8 grid border-l border-t border-slate-900/15 md:mt-10 md:grid-cols-3">
         {projects.map((project, index) => (
           <Reveal key={project.title} delay={index * 80} className="h-full">
-            <article className="h-full border-b border-r border-slate-900/15 p-7 md:p-8">
+            <article className="h-full border-b border-r border-slate-900/15 p-6 md:p-8">
               <Icon icon={project.icon} className="h-9 w-9 text-main" />
-              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-main">0{index + 1}</p>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-main md:mt-8">0{index + 1}</p>
               <h3 className="mt-3 text-2xl font-medium tracking-[-0.025em] text-blu">{project.title}</h3>
-              <div className="mt-7 space-y-5 border-t border-slate-900/10 pt-6">
+              <div className="mt-6 space-y-5 border-t border-slate-900/10 pt-5 md:mt-7 md:pt-6">
                 {project.items.map((item) => (
                   <p key={item.title} className="text-sm leading-6 text-slate-600">
                     <span className="block font-medium text-blu">{item.title}</span>

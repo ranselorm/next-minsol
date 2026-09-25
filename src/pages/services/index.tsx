@@ -19,9 +19,9 @@ const Services = () => {
   return (
     <>
       <ProductHero title="Our services" subtitle="Integrated expertise for more capable mineral resource operations." backgroundImage="/images/align1.jpg" />
-      <main className="bg-white py-20 md:py-24">
+      <main className="bg-white py-16 md:py-24">
         <div className="site-shell">
-          <Reveal className="grid gap-10 border-b border-slate-900/10 pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <Reveal className="grid gap-7 border-b border-slate-900/10 pb-10 md:gap-10 md:pb-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <div>
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Capabilities</p>
               <h2 className="max-w-md text-3xl font-medium leading-tight tracking-[-0.03em] text-blu md:text-5xl">Expertise where operations need it most.</h2>
@@ -29,34 +29,34 @@ const Services = () => {
             <p className="max-w-2xl text-lg leading-8 text-slate-600 md:text-xl md:leading-9">Minsol brings technical, operational, manufacturing, and logistics capability together—supporting projects from early planning through safe, reliable delivery.</p>
           </Reveal>
 
-          <div className="mt-12 md:mt-16">
+          <div className="mt-10 md:mt-16">
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 60}>
-                <article className="grid gap-8 border-t border-slate-900/15 py-12 md:py-16 lg:grid-cols-2 lg:gap-12 lg:items-center">
+                <article className="grid gap-7 border-t border-slate-900/15 py-10 first:border-t-0 md:gap-8 md:py-16 lg:grid-cols-2 lg:gap-12 lg:items-center">
                   <div className={`max-w-2xl ${index % 2 === 1 ? "lg:order-2 lg:pl-6" : "lg:pr-6"}`}>
-                    <div className="mb-6 flex items-center gap-3">
-                      <span className="text-3xl font-medium leading-none tracking-[-0.04em] text-main">0{index + 1}</span>
+                    <div className="mb-5 flex items-center gap-3 md:mb-6">
+                      <span className="text-2xl font-medium leading-none tracking-[-0.04em] text-main md:text-3xl">0{index + 1}</span>
                       <span className="h-px w-8 bg-secondary" aria-hidden="true" />
                       <span className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-slate-500">Service</span>
                     </div>
                     <h3 className="text-2xl font-medium tracking-[-0.025em] text-blu md:text-3xl">{service.title}</h3>
-                    <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">{service.summary}</p>
-                    <div className="mt-5">
-                      <button type="button" aria-expanded={expandedService === index} onClick={() => setExpandedService(expandedService === index ? null : index)} className="inline-flex items-center gap-2 border-b border-main pb-1 text-sm text-main transition-colors hover:text-blu">
+                    <p className="mt-3 text-base leading-7 text-slate-600 md:mt-4 md:text-lg">{service.summary}</p>
+                    <div className="mt-4 md:mt-5">
+                      <button type="button" aria-expanded={expandedService === index} onClick={() => setExpandedService(expandedService === index ? null : index)} className="inline-flex min-h-11 items-center gap-2 border-b border-main text-sm text-main transition-colors hover:border-blu hover:text-blu">
                         {expandedService === index ? "Hide full scope" : "View full scope"}
                         <motion.span animate={{ rotate: expandedService === index ? 45 : 0 }} transition={{ duration: shouldReduceMotion ? 0 : 0.2 }} aria-hidden="true">+</motion.span>
                       </button>
                       <AnimatePresence initial={false}>
                         {expandedService === index && (
                           <motion.div initial={shouldReduceMotion ? false : { height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: shouldReduceMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden">
-                            <p className="mt-5 border-l border-slate-900/15 pl-5 text-sm leading-6 text-slate-600 md:text-base md:leading-7">{service.details}</p>
+                            <p className="mt-4 border-l border-slate-900/15 pl-4 text-sm leading-6 text-slate-600 md:mt-5 md:pl-5 md:text-base md:leading-7">{service.details}</p>
                           </motion.div>
                         )}
                       </AnimatePresence>
                     </div>
                   </div>
                   <div className={`group relative overflow-hidden ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <img src={service.image} alt={service.title} className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] md:h-[420px]" />
+                    <img src={service.image} alt={service.title} className="h-60 w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] sm:h-72 md:h-[420px]" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#101c25]/35 via-transparent to-transparent" />
                   </div>
                 </article>
@@ -66,7 +66,7 @@ const Services = () => {
         </div>
       </main>
       <Premier />
-      <section className="border-y border-slate-900/10 bg-white py-16 md:py-20">
+      <section className="border-y border-slate-900/10 bg-white py-14 md:py-20">
         <div className="site-shell flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <Reveal>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Project discussion</p>
