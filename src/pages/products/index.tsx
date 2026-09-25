@@ -1,4 +1,5 @@
 import Clients from "@/components/Clients";
+import ConveyorShowcase from "@/components/ConveyorShowcase";
 import Experience from "@/components/Experience";
 import ParallaxHero from "@/components/ParallaxHero";
 import ProductCard from "@/components/ProductCard";
@@ -105,6 +106,7 @@ const Products = () => {
       </main>
       <ParallaxHero />
       <Experience />
+      <ConveyorShowcase />
       <RssFeed />
       <Clients />
     </section>
