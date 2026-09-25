@@ -15,7 +15,7 @@ const slides = [
     image: "/images/manu.jpg",
     title: "Manufacturing and Distribution",
     description:
-      "A wide range of high-quality products, from ground support systems and mill liners to grinding media and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
+      "A wide range of high-quality products, from ground support systems and mill liners to grinding media, conveyor systems, and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
     buttonText: "Explore products",
     link: "/products",
   },

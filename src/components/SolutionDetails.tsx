@@ -56,7 +56,7 @@ const SolutionDetails: React.FC<Props> = ({ selectedItem: item }) => {
             <button
               type="button"
               onClick={handleDiscussion}
-              className="inline-flex w-fit items-center gap-2 rounded-sm bg-main px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#51362a]"
+              className="inline-flex w-fit items-center gap-2 rounded-md bg-main px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#51362a]"
             >
               Discuss this solution <span aria-hidden="true">→</span>
             </button>

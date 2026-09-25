@@ -67,7 +67,7 @@ const Navbar = () => {
           </nav>
 
           <div className="ml-auto flex items-center">
-            <button onClick={openModal} className="hidden border border-main bg-main px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-main lg:inline-flex" aria-label="Contact Minsol">
+            <button onClick={openModal} className="hidden rounded-md border border-main bg-main px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-main lg:inline-flex" aria-label="Contact Minsol">
               Contact us
             </button>
             <button
@@ -137,7 +137,7 @@ const Navbar = () => {
               <div className="mt-auto pt-12">
                 <div className="border-t border-slate-900/15 pt-6">
                 <p className="max-w-[18rem] text-sm leading-6 text-slate-600">Technical, operational, and logistics support for the mineral resources industry.</p>
-                <button onClick={openContact} className="mt-5 inline-flex bg-main px-5 py-3 text-sm font-medium text-white">
+                <button onClick={openContact} className="mt-5 inline-flex rounded-md bg-main px-5 py-3 text-sm font-medium text-white">
                   Contact us
                 </button>
                 </div>

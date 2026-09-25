@@ -18,8 +18,8 @@ interface ProductCardProps {
 
 const ProductCard = ({ image, title, description, description2, index, featured = false }: ProductCardProps) => (
   <Dialog>
-    <article className={`group h-full ${featured ? "grid overflow-hidden bg-accent md:grid-cols-2" : ""}`}>
-      <div className="overflow-hidden">
+    <article className={`group h-full ${featured ? "grid overflow-hidden rounded-lg bg-accent md:grid-cols-2" : ""}`}>
+      <div className={`overflow-hidden ${featured ? "" : "rounded-lg"}`}>
         <img src={image} alt={title} className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${featured ? "h-80 md:h-full md:min-h-[470px]" : "h-64 md:h-80"}`} />
       </div>
       <div className={featured ? "flex flex-col justify-center p-7 md:p-12" : "border-b border-slate-900/15 py-6"}>
@@ -34,7 +34,7 @@ const ProductCard = ({ image, title, description, description2, index, featured 
       </div>
     </article>
 
-    <DialogContent className="max-h-[calc(100vh-2rem)] max-w-4xl overflow-y-auto border-slate-900/10 p-0 text-blu sm:rounded-sm">
+    <DialogContent className="max-h-[calc(100vh-2rem)] max-w-4xl overflow-y-auto border-slate-900/10 p-0 text-blu sm:rounded-lg">
       <div className="grid md:grid-cols-2">
         <div className="min-h-64 overflow-hidden md:min-h-full">
           <img src={image} alt="" className="h-full w-full object-cover" />

@@ -14,9 +14,9 @@ const solutions = [
   {
     title: "Manufacturing and Distribution",
     description:
-      "A wide range of high-quality products, from ground support systems and mill liners to grinding media and steel products.",
+      "A wide range of high-quality products, from ground support systems and mill liners to grinding media, conveyor systems, and steel products.",
     details:
-      "A wide range of high-quality products, from ground support systems and mill liners to grinding media and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
+      "A wide range of high-quality products, from ground support systems and mill liners to grinding media, conveyor systems, and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
     buttonText: "More Information",
     image: "/images/manu.jpg",
   },
@@ -87,7 +87,7 @@ const Solutions: React.FC<SolutionsProps> = ({ onSolutionClick }) => {
                   </p>
                 </div>
                 <button
-                  className="mt-5 inline-flex w-fit items-center gap-2 border-b border-main pb-1 text-sm font-semibold text-main transition-colors hover:border-blu hover:text-blu focus-visible:rounded-sm"
+                  className="mt-auto inline-flex w-fit items-center gap-2 border-b border-main pt-5 pb-1 text-sm font-semibold text-main transition-colors hover:border-blu hover:text-blu focus-visible:rounded-sm"
                   onClick={() => onSolutionClick(solution)}
                 >
                   {solution.buttonText}
