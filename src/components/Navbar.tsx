@@ -3,7 +3,6 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useModal } from "@/context/ModalContext";
 
 const links = [
   { label: "Home", path: "/" },
@@ -15,7 +14,6 @@ const links = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { openModal } = useModal();
   const { pathname } = useRouter();
   const reduceMotion = useReducedMotion();
 
@@ -34,17 +32,12 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
-  const openContact = () => {
-    setIsMenuOpen(false);
-    window.setTimeout(openModal, 120);
-  };
-
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-slate-900/10 bg-body/95 text-blu backdrop-blur-md">
         <div className="site-shell grid h-[76px] grid-cols-[1fr_auto] items-center lg:h-[88px] lg:grid-cols-[1fr_auto_1fr]">
           <Link href="/" className="flex items-center" aria-label="Minsol home">
-            <img src="/images/logo.png" className="h-auto w-28 object-contain lg:w-32" alt="Minsol Limited" />
+            <img src="/images/logo.png" className="h-auto w-24 object-contain lg:w-32" alt="Minsol Limited" />
           </Link>
 
           <nav className="hidden h-full items-stretch lg:flex" aria-label="Primary navigation">
@@ -67,9 +60,9 @@ const Navbar = () => {
           </nav>
 
           <div className="ml-auto flex items-center">
-            <button onClick={openModal} className="hidden rounded-md border border-main bg-main px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-main lg:inline-flex" aria-label="Contact Minsol">
+            <Link href="/contact" className="hidden rounded-md border border-main bg-main px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-main lg:inline-flex" aria-label="Contact Minsol">
               Contact us
-            </button>
+            </Link>
             <button
               type="button"
               onClick={() => setIsMenuOpen(true)}
@@ -97,7 +90,7 @@ const Navbar = () => {
           >
             <div className="site-shell flex min-h-full flex-col py-6">
               <div className="flex items-center justify-between">
-                <Link href="/" onClick={() => setIsMenuOpen(false)} className="w-28" aria-label="Minsol home">
+                <Link href="/" onClick={() => setIsMenuOpen(false)} className="w-24" aria-label="Minsol home">
                   <img src="/images/logo.png" className="h-auto w-full" alt="Minsol Limited" />
                 </Link>
                 <button
@@ -122,7 +115,7 @@ const Navbar = () => {
                             href={link.path}
                             onClick={() => setIsMenuOpen(false)}
                             aria-current={isActive ? "page" : undefined}
-                            className={`flex items-baseline justify-between border-t border-slate-900/15 py-5 text-3xl font-medium tracking-[-0.04em] ${isActive ? "text-main" : "text-blu"}`}
+                            className={`flex items-baseline justify-between border-t border-slate-900/15 py-4 text-2xl font-medium tracking-[-0.035em] ${isActive ? "text-main" : "text-blu"}`}
                           >
                             <span>{link.label}</span>
                             <Icon icon="mdi:arrow-up-right" width="20" className="text-main" aria-hidden="true" />
@@ -137,9 +130,9 @@ const Navbar = () => {
               <div className="mt-auto pt-12">
                 <div className="border-t border-slate-900/15 pt-6">
                 <p className="max-w-[18rem] text-sm leading-6 text-slate-600">Technical, operational, and logistics support for the mineral resources industry.</p>
-                <button onClick={openContact} className="mt-5 inline-flex rounded-md bg-main px-5 py-3 text-sm font-medium text-white">
+                <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="mt-5 inline-flex rounded-md bg-main px-5 py-3 text-sm font-medium text-white">
                   Contact us
-                </button>
+                </Link>
                 </div>
               </div>
             </div>

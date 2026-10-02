@@ -1,5 +1,5 @@
 import React from "react";
-import { useModal } from "../../context/ModalContext";
+import Link from "next/link";
 
 interface HeroProps {
   title: string;
@@ -18,8 +18,6 @@ const Hero: React.FC<HeroProps> = ({
   flexImage,
   imageAlt,
 }) => {
-  const { openModal } = useModal();
-
   return (
     <section
       className="relative bg-cover bg-center flex items-center text-white"
@@ -36,12 +34,12 @@ const Hero: React.FC<HeroProps> = ({
             {title}
           </h1>
           <p className="text-lg md:text-xl mb-6">{subtitle}</p>
-          <button
+          <Link
+            href="/contact"
             className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-md transition"
-            onClick={openModal}
           >
             {buttonText}
-          </button>
+          </Link>
         </div>
 
         {/* Image */}

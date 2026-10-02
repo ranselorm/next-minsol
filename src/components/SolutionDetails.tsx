@@ -12,7 +12,7 @@ interface Props {
 }
 
 const SolutionDetails: React.FC<Props> = ({ selectedItem: item }) => {
-  const { isOpen, closeSheet, openModal } = useModal();
+  const { isOpen, closeSheet } = useModal();
 
   if (!item) {
     return null;
@@ -20,7 +20,7 @@ const SolutionDetails: React.FC<Props> = ({ selectedItem: item }) => {
 
   const handleDiscussion = () => {
     closeSheet();
-    window.setTimeout(openModal, 150);
+    window.location.href = `/contact?service=${encodeURIComponent(item.title)}`;
   };
 
   return (

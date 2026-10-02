@@ -58,15 +58,6 @@ const PlantsAndOffices: React.FC = () => {
             title="4 Apple Avenue Map"
           ></iframe>
         </div> */}
-        {/* <div>
-          <button
-            onClick={openModal} //desktop
-            className="bg-main px-4 py-2 rounded-lg text-white w-[20%] mt-5"
-          >
-            Contact Us
-          </button>
-        </div> */}
-
         <div className="mb-6">
           <img
             src="/images/map.png"

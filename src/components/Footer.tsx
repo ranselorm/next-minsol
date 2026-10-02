@@ -50,12 +50,12 @@ const Footer: React.FC = () => (
         <p className="mt-6 max-w-sm text-sm leading-6 text-white/65">
           Technical, operational, and logistics support for the mineral resources industry.
         </p>
-        <a
-          href="mailto:operationsgh@minsolltd.com"
+        <Link
+          href="/contact"
           className="mt-6 inline-flex items-center gap-2 border-b border-secondary pb-1 text-sm font-semibold text-secondary transition-colors hover:text-white"
         >
           Start a conversation <span aria-hidden="true">→</span>
-        </a>
+        </Link>
       </div>
 
       <div>

@@ -1,6 +1,7 @@
 import ProductHero from "@/components/ProductHero";
 import Reveal from "@/components/Reveal";
 import Premier from "@/components/Premier";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
@@ -72,7 +73,7 @@ const Services = () => {
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-main">Project discussion</p>
             <h2 className="max-w-2xl text-3xl font-medium leading-tight tracking-[-0.03em] text-blu md:text-5xl">Let&apos;s discuss your operational requirements.</h2>
           </Reveal>
-          <a href="mailto:operationsgh@minsolltd.com" className="inline-flex w-fit items-center gap-3 border-b border-main pb-2 text-sm font-medium text-main transition-colors hover:border-blu hover:text-blu">Contact Minsol <span className="text-lg text-main" aria-hidden="true">→</span></a>
+          <Link href="/contact" className="inline-flex w-fit items-center gap-3 border-b border-main pb-2 text-sm font-medium text-main transition-colors hover:border-blu hover:text-blu">Contact Minsol <span className="text-lg text-main" aria-hidden="true">→</span></Link>
         </div>
       </section>
     </>

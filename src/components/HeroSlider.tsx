@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 const slides = [
   {
-    image: "/images/welcome.jpg",
+    image: "https://images.pexels.com/photos/27978004/pexels-photo-27978004/free-photo-of-two-men-are-working-on-scaffolding-in-front-of-a-building.jpeg?auto=compress&cs=tinysrgb&w=2400",
     title: "Welcome to Minsol Limited",
     description:
       "Your premier partner in consultancy and logistics for the mineral resources industry. We specialize in providing innovative solutions across a broad spectrum of services",
@@ -12,7 +12,7 @@ const slides = [
     link: "/services",
   },
   {
-    image: "/images/manu.jpg",
+    image: "https://images.pexels.com/photos/10202856/pexels-photo-10202856.jpeg?auto=compress&cs=tinysrgb&w=2400",
     title: "Manufacturing and Distribution",
     description:
       "A wide range of high-quality products, from ground support systems and mill liners to grinding media, conveyor systems, and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
@@ -20,7 +20,7 @@ const slides = [
     link: "/products",
   },
   {
-    image: "/images/train.jpg",
+    image: "https://images.pexels.com/photos/35082108/pexels-photo-35082108/free-photo-of-industrial-safety-training-session-in-factory.jpeg?auto=compress&cs=tinysrgb&w=2400",
     title: "Training for Mining/Processing Personnel",
     description:
       "Specialized programs to enhance the skills and safety of operational teams",
@@ -28,7 +28,7 @@ const slides = [
     link: "/services",
   },
   {
-    image: "/images/tech.jpg",
+    image: "https://images.pexels.com/photos/37198880/pexels-photo-37198880/free-photo-of-team-of-engineers-reviewing-construction-plans.jpeg?auto=compress&cs=tinysrgb&w=2400",
     title: "Technical and Engineering Services",
     description:
       "Comprehensive engineering, procurement, and construction management (EPCM) solutions.",
