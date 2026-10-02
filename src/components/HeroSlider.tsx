@@ -14,7 +14,7 @@ const slides = [
   },
   {
     image:
-      "https://images.pexels.com/photos/10202856/pexels-photo-10202856.jpeg?auto=compress&cs=tinysrgb&w=2400",
+      "https://images.pexels.com/photos/31352672/pexels-photo-31352672/free-photo-of-industrial-factory-floor-with-machinery.jpeg?auto=compress&cs=tinysrgb&w=2400",
     title: "Manufacturing and Distribution",
     description:
       "A wide range of high-quality products, from ground support systems and mill liners to grinding media, conveyor systems, and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
@@ -23,7 +23,7 @@ const slides = [
   },
   {
     image:
-      "https://images.pexels.com/photos/35082108/pexels-photo-35082108/free-photo-of-industrial-safety-training-session-in-factory.jpeg?auto=compress&cs=tinysrgb&w=2400",
+      "https://images.pexels.com/photos/8487375/pexels-photo-8487375.jpeg?auto=compress&cs=tinysrgb&w=2400",
     title: "Training for Mining/Processing Personnel",
     description:
       "Specialized programs to enhance the skills and safety of operational teams",
@@ -32,7 +32,7 @@ const slides = [
   },
   {
     image:
-      "https://images.pexels.com/photos/37198880/pexels-photo-37198880/free-photo-of-team-of-engineers-reviewing-construction-plans.jpeg?auto=compress&cs=tinysrgb&w=2400",
+      "https://images.pexels.com/photos/5298215/pexels-photo-5298215.jpeg?auto=compress&cs=tinysrgb&w=2400",
     title: "Technical and Engineering Services",
     description:
       "Comprehensive engineering, procurement, and construction management (EPCM) solutions.",
