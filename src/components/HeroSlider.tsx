@@ -31,8 +31,7 @@ const slides = [
     link: "/services",
   },
   {
-    image:
-      "https://images.pexels.com/photos/5298215/pexels-photo-5298215.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    image: "/images/rel.png",
     title: "Technical and Engineering Services",
     description:
       "Comprehensive engineering, procurement, and construction management (EPCM) solutions.",
