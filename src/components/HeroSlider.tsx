@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
@@ -43,6 +44,7 @@ const slides = [
 const HeroSlider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isManual, setIsManual] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!isManual) {
@@ -68,12 +70,16 @@ const HeroSlider: React.FC = () => {
       aria-label="Featured Minsol services"
     >
       {slides.map((slide, index) => (
-        <div
+        <motion.div
           key={index}
           aria-hidden={index !== currentSlide}
-          className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
+          initial={reduceMotion ? false : { opacity: 0, scale: 1.015 }}
+          animate={{
+            opacity: index === currentSlide ? 1 : 0,
+            scale: index === currentSlide ? 1 : 1.01,
+          }}
+          transition={{ duration: reduceMotion ? 0.15 : 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className={`absolute inset-0 ${index === currentSlide ? "z-10" : "z-0"}`}
           style={{
             backgroundImage: `url(${slide.image})`,
             backgroundSize: "cover",
@@ -82,7 +88,16 @@ const HeroSlider: React.FC = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#101c25]/95 via-[#101c25]/75 to-[#101c25]/20" />
           <div className="site-shell relative z-10 flex h-full items-center">
-            <div className="max-w-2xl text-left text-white">
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: index === currentSlide ? 1 : 0, y: index === currentSlide ? 0 : 8 }}
+              transition={{
+                duration: reduceMotion ? 0.15 : 0.5,
+                delay: reduceMotion || index !== currentSlide ? 0 : 0.14,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="max-w-2xl text-left text-white"
+            >
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-secondary md:text-sm">
                 Mineral resources solutions
               </p>
@@ -100,9 +115,9 @@ const HeroSlider: React.FC = () => {
                 {slide.buttonText}
                 <Icon icon="ep:right" width="18" aria-hidden="true" />
               </Link>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       ))}
 
       <div className="absolute bottom-8 left-5 z-20 flex gap-2 md:left-20">
