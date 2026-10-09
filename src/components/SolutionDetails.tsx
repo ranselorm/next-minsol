@@ -1,4 +1,5 @@
 import { useModal } from "@/context/ModalContext";
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -50,6 +51,15 @@ const SolutionDetails: React.FC<Props> = ({ selectedItem: item }) => {
             <p className="max-w-2xl text-base leading-7 text-slate-700 md:text-[1.0625rem] md:leading-8">
               {item.details}
             </p>
+            {item.productsHref && (
+              <Link
+                href={item.productsHref}
+                onClick={closeSheet}
+                className="mt-5 inline-flex items-center gap-2 border-b border-main pb-1 text-sm font-medium text-main transition-colors hover:border-blu hover:text-blu"
+              >
+                View products <span aria-hidden="true">→</span>
+              </Link>
+            )}
           </div>
           <div className="mt-8 flex flex-col gap-3 border-t border-slate-900/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-slate-600">Have a project in mind?</p>

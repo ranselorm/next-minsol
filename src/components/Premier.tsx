@@ -4,6 +4,17 @@ import Reveal from "./Reveal";
 
 const projects = [
   {
+    icon: "mdi:flask-outline",
+    title: "Mining Reagents",
+    items: [
+      {
+        title: "Reliable supply",
+        description:
+          "Activated Carbon, Sodium Cyanide, and Hydrogen Peroxide for dependable mineral-processing operations.",
+      },
+    ],
+  },
+  {
     icon: "arcticons:idle-miner",
     title: "Mill Liners",
     items: [
@@ -45,12 +56,14 @@ const Premier = () => (
         <p className="text-sm leading-6 text-slate-600">A focused selection from our wider product portfolio.</p>
         <Link href="/products" className="shrink-0 border-b border-main pb-1 text-sm font-medium text-main transition-colors hover:border-blu hover:text-blu">Explore products <span aria-hidden="true">→</span></Link>
       </div>
-      <div className="mt-8 grid border-l border-t border-slate-900/15 md:mt-10 md:grid-cols-3">
+      <div className="mt-8 grid border-l border-t border-slate-900/15 sm:grid-cols-2 md:mt-10 xl:grid-cols-4">
         {projects.map((project, index) => (
           <Reveal key={project.title} delay={index * 80} className="h-full">
             <article className="h-full border-b border-r border-slate-900/15 p-6 md:p-8">
               <Icon icon={project.icon} className="h-9 w-9 text-main" />
-              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-main md:mt-8">0{index + 1}</p>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-main md:mt-8">
+                {String(index + 1).padStart(2, "0")}
+              </p>
               <h3 className="mt-3 text-2xl font-medium tracking-[-0.025em] text-blu">{project.title}</h3>
               <div className="mt-6 space-y-5 border-t border-slate-900/10 pt-5 md:mt-7 md:pt-6">
                 {project.items.map((item) => (

@@ -14,9 +14,10 @@ const solutions = [
   {
     title: "Manufacturing and Distribution",
     description:
-      "A wide range of high-quality products, from ground support systems and mill liners to grinding media, conveyor systems, and steel products.",
+      "Reliable supply of mining reagents, ground support systems, mill liners, grinding media, conveyor systems, and steel products.",
     details:
-      "A wide range of high-quality products, from ground support systems and mill liners to grinding media, conveyor systems, and steel products. Tailored design, fabrication, casting, and machining solutions for custom foundry needs.",
+      "Mining reagents are a core part of our business. We provide a reliable supply of reagents alongside ground support systems, mill liners, grinding media, conveyor systems, and steel products. Tailored design, fabrication, casting, and machining solutions support custom foundry needs.",
+    productsHref: "/products",
     buttonText: "More Information",
     image: "/images/manu.jpg",
   },
